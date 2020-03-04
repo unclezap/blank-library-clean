@@ -1,0 +1,10 @@
+
+<center><%= link_to "Make a new page", new_page_path %>
+<br>
+<br>
+<h1>Page <%= @page.id %> </h1>
+<% @lines.each do |line| %>
+    <%= line.print_text %>
+<% end %>
+
+</center>
