@@ -1,0 +1,13 @@
+<h1>Welcome to the Library of Babel</h1>
+
+<% if flash[:notice] %>
+<h2><%= flash[:notice] %></h2>
+<% end %>
+
+<%= form_tag login_path do %>
+Enter your name, traveler <%= text_field_tag :name %>
+<br>
+Speak your passphrase <%= password_field_tag :password %>
+<br>
+    <%= submit_tag "Enter" %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_001833) do
+ActiveRecord::Schema.define(version: 2020_03_05_002906) do
 
   create_table "books", force: :cascade do |t|
     t.integer "shelf_id"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 2020_03_04_001833) do
     t.integer "user_id"
   end
 
+  create_table "quotes", force: :cascade do |t|
+    t.string "text"
+  end
+
   create_table "shelves", force: :cascade do |t|
     t.integer "wall_id"
   end
@@ -46,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_001833) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "password"
+    t.string "password_digest"
   end
 
   create_table "walls", force: :cascade do |t|

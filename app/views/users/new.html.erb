@@ -1,2 +1,15 @@
 <h1>User#new</h1>
 <p>Find me in app/views/user/new.html.erb</p>
+
+<h3><%= flash[:notice] %></h3>
+<br>
+<%= link_to "Try again", login_path %>
+<br>
+<h3>...are you new? </h3>
+
+<%= form_for @user do |f| %>
+What is your name? <%= f.text_field :name %>
+<br>
+Create a passphrase: <%= f.text_field :password %>
+    <%= f.submit "Enter" %>
+<% end %>

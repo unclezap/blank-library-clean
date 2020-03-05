@@ -1,2 +1,8 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1>Denizens of the library</h1>
+
+Name: <%= @user.name %>
+
+<% if @user == current_user %>
+    <%= button_to 'DIE', '/users/destroy', method: :delete %>
+    <%= button_to 'LEAVE', '/logout', method: :delete %>
+<% end %>
