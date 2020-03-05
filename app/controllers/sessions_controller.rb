@@ -4,18 +4,25 @@ class SessionsController < ApplicationController
     def wander
     end
 
+    def new
+        if logged_in
+            redirect_to @user
+        end
+    end
+
     def create
         # byebug
         @user = User.find_by(name: params[:name])
 
         if @user && @user.authenticate(params[:password])
             login_user(@user)
-            # byebug
+                # byebug
             redirect_to wander_path
         else
             flash[:notice] = "That wasn't the passphrase..."
             redirect_to new_user_path
         end
+
     end
 
     def destroy
