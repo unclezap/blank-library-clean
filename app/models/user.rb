@@ -1,5 +1,10 @@
 class User < ApplicationRecord
     has_secure_password
+    validates_confirmation_of :password
+    validates :name, presence: true
+    validates :name, uniqueness: true
+    # attr_accessible :name
+    # attr_protected :password_digest
 
     has_many :books
     has_many :shuttles

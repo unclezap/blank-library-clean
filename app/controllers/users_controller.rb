@@ -25,12 +25,14 @@ class UsersController < ApplicationController
 
   def new
     # byebug
+    # pocket.delete
     @user = current_user
   end
 
   def create
     # byebug
     @user = User.create(whodat)
+    # byebug
     login_user(@user)
     redirect_to wander_path
   end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/wander', to: "sessions#wander"
 
   patch '/pocket', to: "pocket#update"
+  delete '/pocket', to: "pocket#delete", as: "/delete/pocket"
 
   # post '/pages', to: 'pages#create', as: '/create/page'
   # resources :users, only: [:index, :show, :new, :edit, :update, :new, :create, :destroy]

@@ -10,6 +10,6 @@
 <%= form_for @user do |f| %>
 What is your name? <%= f.text_field :name %>
 <br>
-Create a passphrase: <%= f.text_field :password %>
+Create a passphrase: <%= f.password_field :password %>
     <%= f.submit "Enter" %>
 <% end %>
