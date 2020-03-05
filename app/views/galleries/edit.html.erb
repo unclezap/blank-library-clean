@@ -1,0 +1,15 @@
+<h1>GRAFFITI IS IMMORAL YOU KNOW</h1>
+
+<p><%= "The name of this room is #{@gallery.name}" %>
+<p>Here are some suggested re-names:</p>
+<ul><%= @name1 %></ul>
+<ul><%= @name2 %></ul>
+<ul><%= @name3 %></ul>
+<br>
+<br>
+<%= form_for @gallery do |f| %>
+    What do you want to call the room?
+    <%= f.text_field :name %>
+    <%= f.submit %>
+<% end %>
+<%= render "form" %>

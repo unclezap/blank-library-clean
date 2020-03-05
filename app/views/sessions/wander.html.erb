@@ -1,15 +1,10 @@
 <h1> YOU MADE IT </h1>
 <%= @user.name %>
-
-<!-- <%= link_to "Enter the library", @user.galleries.last %> -->
-
-<%= link_to "Return", login_path %>
-
-<p>Times you've logged in:</p>
-
-<%= @log %>
-
-<%= link_to "Your logout page", @user %>
+<br>
+<h2><%= link_to "Enter the library", @gallery %><h2>
+<p><%= link_to "View the known libraries", galleries_path %></p>
+<p>Times you've logged in: <%= @log %></p>
+<%= link_to "Your logout page", @user %><br>
 
 <% if @user.id == 1 %>
 <%= link_to "Delete the pocket", delete_pocket_path, method: 'delete' %>

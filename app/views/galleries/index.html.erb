@@ -1,0 +1,11 @@
+<h1> All Galleries </h1>
+<br>
+<% @galleries.each do |gallery| %>
+    <h4><%= "Name: #{gallery.name}" %></h4>
+    <br>
+    <%= "Coordinates: [#{gallery.x_axis}, #{gallery.z_axis}]" %>
+    <br>
+<% end %>
+<br>
+<br>
+<%= render "form" %>

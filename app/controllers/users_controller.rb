@@ -6,39 +6,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    # byebug
-    # @user = User.find_by_id(params[:id])
-    # byebug
-    # if @user.authenticate(params[:password])
-    #   byebug
-    #   login_user(@user)
-    # end
-
     @user = User.find_by_id(params[:id]) unless logged_in
-
-
-    # byebug
-    # unless session[:user_id] != nil
-    #   @user = User.find_by_id(params[:id])
-    # end
   end
 
   def new
-    # byebug
-    # pocket.delete
     @user = current_user
   end
 
   def create
-    # byebug
     @user = User.create(whodat)
-    # byebug
     login_user(@user)
     redirect_to wander_path
   end
 
-  def edit
-  end
 
   def update
   end
