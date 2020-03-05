@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
   delete '/users/destroy', to: "users#destroy"
+  get '/wander', to: "sessions#wander"
+  post '/wander', to: "sessions#wander"
 
   patch '/pocket', to: "pocket#update"
 

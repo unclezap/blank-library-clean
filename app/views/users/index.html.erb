@@ -1,8 +1,11 @@
 <center><h1>Citizens of the Libraries</h1>
 <br>
-<br>
 <% @users.all.each do |user| %>
-    <h2><%= user.name %><br></h2>
-    in gallery <%= [user.galleries[-1].x_axis, user.galleries[-1].z_axis] %>
+    <h4><%= user.name %></h4>
+    <% if user.galleries[0] %>
+        <%= "in gallery [#{user.galleries[-1].x_axis}, #{user.galleries[-1].z_axis}]" %>
+    <% else %>
+        <%= "waiting" %>
+    <% end %>
     <br>
 <% end %></center>

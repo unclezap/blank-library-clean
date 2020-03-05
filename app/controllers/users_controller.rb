@@ -9,7 +9,14 @@ class UsersController < ApplicationController
     # byebug
     # @user = User.find_by_id(params[:id])
     # byebug
+    # if @user.authenticate(params[:password])
+    #   byebug
+    #   login_user(@user)
+    # end
+
     @user = User.find_by_id(params[:id]) unless logged_in
+
+
     # byebug
     # unless session[:user_id] != nil
     #   @user = User.find_by_id(params[:id])
@@ -17,13 +24,15 @@ class UsersController < ApplicationController
   end
 
   def new
+    # byebug
     @user = current_user
   end
 
   def create
+    # byebug
     @user = User.create(whodat)
-
-    redirect_to @user
+    login_user(@user)
+    redirect_to wander_path
   end
 
   def edit
@@ -33,19 +42,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    byebug
     @user = User.find(session[:user_id])
-    byebug
     session.delete(:user_id)
-    byebug
     @user.delete
-    byebug
     redirect_to new_user_path
   end
 
   private
 
   def whodat
+    # byebug
     params.require(:user).permit(:name,:password)
   end
 
