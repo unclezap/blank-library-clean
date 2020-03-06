@@ -5,6 +5,7 @@ class GalleriesController < ApplicationController
   
     def show
       @gallery = Gallery.find_by_id(params[:id])
+      @my_walls = @gallery.walls
     end
   
     def move
@@ -32,8 +33,11 @@ class GalleriesController < ApplicationController
         @user = User.find_by_id(session[:user_id])
         @user.galleries << @gallery
         @user.save
-
-        redirect_to @gallery
+        if params[:commit] == "I'm moving"
+            redirect_to @gallery
+        else
+            redirect_to wall_splash_path
+        end
     end
 
     def create
@@ -60,6 +64,7 @@ class GalleriesController < ApplicationController
     private
 
     def whereami
+        # byebug
         params.require(:gallery).permit(:name, :move, :gallery, :gallery_id)
     end
 

@@ -10,7 +10,7 @@ class Gallery < ApplicationRecord
 
         rand_name = Gallery.make_name
         @gallery = Gallery.create(x_axis: @x_axis, z_axis: @z_axis, name: rand_name)
-        4.times do
+        2.times do
             Wall.make_with_shelves(@gallery)
         end
 

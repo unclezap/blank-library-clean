@@ -1,5 +1,4 @@
-<h1> YOU MADE IT </h1>
-<%= @user.name %>
+<center><h1><%= "YOU MADE IT, #{@user.name}" %></h1>
 <br>
 <h2><%= link_to "Enter the library", @gallery %><h2>
 <p><%= link_to "View the known libraries", galleries_path %></p>
@@ -10,3 +9,8 @@
 <% if @user.id == 1 %>
 <%= link_to "Delete the pocket", delete_pocket_path, method: 'delete' %>
 <% end %>
+
+<br>
+
+The universe (which others call the Library) is composed of an indefinite and perhaps infinite number of hexagonal galleries...
+</center>

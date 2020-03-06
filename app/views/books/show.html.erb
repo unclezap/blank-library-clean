@@ -1,0 +1,8 @@
+BOOK
+
+<%= form_for page_splash_path do |f| %>
+    Which page do you want to read?
+        <%= f.collection_select :page_id, @pages, :id, :id %>
+    <%= f.submit "That page" %>
+<% end %>
+<br>

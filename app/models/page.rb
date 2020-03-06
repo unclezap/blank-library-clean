@@ -7,10 +7,9 @@ class Page < ApplicationRecord
         @book = book
         @page = Page.create
 
-        40.times do
+        10.times do
             Line.make_with_text(@page)
         end
-
         @book.pages << @page
         @page.save
         @page

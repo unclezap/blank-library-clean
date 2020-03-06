@@ -1,4 +1,18 @@
 <h1><%= @gallery.name %></h1>
+
+<%= form_tag new_gallery_path do |f| %>
+    <%= select_tag "move", options_for_select([["Move forward", "forward"],["Move back", "back"], ["Go up the stairs", "up"], ["Go down the stairs", "down"]]) %>
+    <%= hidden_field_tag "gallery_id", @gallery.id %>
+    <%= submit_tag "I'm moving" %>
+<% end %>
+<br>
+<%= form_for wall_splash_path do |f| %>
+    Or which wall do you want to see?
+        <%= f.collection_select :wall_id, @my_walls, :id, :id %>
+    <%= f.submit "That wall" %>
+<% end %>
+<br>
+
 <p><%= link_to "(rename this gallery)", edit_gallery_path(@gallery) %></p>
 
 <%= render "form" %>

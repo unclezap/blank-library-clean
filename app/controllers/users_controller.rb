@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   private
 
   def whodat
-    # byebug
     params.require(:user).permit(:name,:password)
   end
 

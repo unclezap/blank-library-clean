@@ -1,0 +1,8 @@
+WALL
+
+<%= form_for shelf_splash_path do |f| %>
+    Which shelf do you want to see?
+        <%= f.collection_select :shelf_id, @shelves, :id, :id %>
+    <%= f.submit "That shelf" %>
+<% end %>
+<br>

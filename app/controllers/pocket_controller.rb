@@ -5,9 +5,7 @@ class PocketController < ApplicationController
     end
 
     def delete
-        # byebug
         session.delete(:pocket)
-        # byebug
     end
 
 end

@@ -2,14 +2,15 @@ class SessionsController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
 
     def wander
-        # byebug
         @user = User.find_by_id(session[:user_id])
         @name = @user.name
         @log = session[:pocket]["#{@name}logins"]
-
-        if @user.galleries.count == 0
-            new_gallery = Gallery.make_with_walls(0,0)
-            @user.galleries << new_gallery
+        if @user.galleries.count == 0 
+            if Gallery.all.count < 1 
+                new_gallery = Gallery.make_with_walls(0,0)
+            end
+            
+            @user.galleries << Gallery.all.first
             @user.save
         end
 

@@ -7,13 +7,9 @@ class Wall < ApplicationRecord
         @gallery = gallery
         @wall = Wall.create
 
-        5.times do
-            Shelf.make_without_books(@wall)
+        2.times do
+            Shelf.make_with_books(@wall)
         end
-
-        # 1.times do
-        #     Shelf.make_with_books(@wall)
-        # end
 
         @gallery.walls << @wall
         @wall.save

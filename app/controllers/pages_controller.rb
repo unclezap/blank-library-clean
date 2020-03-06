@@ -1,12 +1,15 @@
 class PagesController < ApplicationController
+  def splash
+    @page = Page.all.find_by_id(params[:id])
+    redirect_to @page
+  end
+  
   def index
   end
 
   def show
     @page = Page.find_by_id(params[:id])
     @lines = @page.lines
-    # byebug
-
   end
 
   def new
@@ -14,10 +17,8 @@ class PagesController < ApplicationController
   end
 
   def create
-    # byebug
     Page.make_with_lines
     @page = Page.all.last
-    # byebug
     redirect_to page_path(@page)
   end
 

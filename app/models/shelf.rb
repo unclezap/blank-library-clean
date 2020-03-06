@@ -7,10 +7,9 @@ class Shelf < ApplicationRecord
         @wall = wall
         @shelf = Shelf.create
 
-        1.times do
+        2.times do
             Book.make_with_pages(@shelf)
         end
-
         @wall.shelves << @shelf
         @shelf.save
         @shelf   

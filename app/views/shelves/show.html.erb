@@ -1,0 +1,8 @@
+SHELF
+
+<%= form_for book_splash_path do |f| %>
+    Which book do you want to see?
+        <%= f.collection_select :book_id, @books, :id, :id %>
+    <%= f.submit "That book" %>
+<% end %>
+<br>

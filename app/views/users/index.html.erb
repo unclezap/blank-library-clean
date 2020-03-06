@@ -3,7 +3,10 @@
 <% @users.all.each do |user| %>
     <h4><%= user.name %></h4>
     <% if user.galleries[0] %>
-        <%= "in gallery [#{user.galleries[-1].x_axis}, #{user.galleries[-1].z_axis}]" %>
+        <%= "in gallery [#{user.galleries[-1].x_axis}, #{user.galleries[-1].z_axis}]" %><br><br>
+        <% rand_quote_id = rand(1..Quote.count) %>
+        <% rand_quote = Quote.find_by_id(rand_quote_id) %>
+        <%= rand_quote.text %>
     <% else %>
         <%= "waiting" %>
     <% end %>
