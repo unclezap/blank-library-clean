@@ -7,6 +7,39 @@ class GalleriesController < ApplicationController
       @gallery = Gallery.find_by_id(params[:id])
     end
   
+    def move
+        @gallery_old = Gallery.find_by_id(params[:gallery_id])
+        if params[:move] == "forward"
+            x = 1 + @gallery_old.x_axis
+            z = 0 + @gallery_old.z_axis
+        elsif params[:move] == "back"
+            x = -1 + @gallery_old.x_axis
+            z = 0 + @gallery_old.z_axis
+        elsif params[:move] == "up"
+            x = 0 + @gallery_old.x_axis
+            z = 1 + @gallery_old.z_axis
+        elsif params[:move] == "down"
+            x = 0 + @gallery_old.x_axis
+            z = -1 + @gallery_old.z_axis
+        end
+
+        if Gallery.exists?(x_axis: x, z_axis: z)
+            @gallery = Gallery.all.find {|gallery| gallery.x_axis == x && gallery.z_axis == z}
+        else
+            @gallery = Gallery.make_with_walls(x,z)
+        end
+
+        @user = User.find_by_id(session[:user_id])
+        @user.galleries << @gallery
+        @user.save
+
+        redirect_to @gallery
+    end
+
+    def create
+        @gallery = Gallery.make_with_walls
+    end
+    
     def edit
         @gallery = Gallery.find_by_id(params[:id])
         @name1 = Gallery.make_name
@@ -27,7 +60,7 @@ class GalleriesController < ApplicationController
     private
 
     def whereami
-        params.require(:gallery).permit(:name)
+        params.require(:gallery).permit(:name, :move, :gallery, :gallery_id)
     end
 
   end
